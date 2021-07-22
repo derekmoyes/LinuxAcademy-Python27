@@ -1,0 +1,12 @@
+#!/usr/local/bin/python
+# Python 2.7 Scripting for System Administrators
+
+# simple way, but you can run into list errors if there's no argument 
+#import sys 
+#print("First argument %s" % sys.argv[1])
+
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('filename', help='the file to read')
+args = parser.parse_args()

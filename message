@@ -1,0 +1,22 @@
+#!/usr/local/bin/python
+# Python 2.7 Scripting for System Administrators
+
+import six
+
+def message_repeat(message, count):
+  print("Repeating the text '%s' %s times."% (message, count))
+  while count > 0:
+    print(message)
+    count -= 1
+
+# Using six for input ensures that input works the same on both 
+#   Python2 and Python3
+message = six.moves.input("Enter a message: ")
+count = six.moves.input("Number of times to repeat it (enter an integer) [1]: ").strip()
+
+if count:
+  count = int(count)
+else:
+  count = 1
+
+message_repeat(message, count)

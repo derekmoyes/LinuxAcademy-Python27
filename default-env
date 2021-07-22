@@ -1,0 +1,14 @@
+#!/usr/local/bin/python
+# Python 2.7 Scripting for System Administrators
+
+import os
+
+loginname = (os.getenv("LOGNAME") or "variable LOGNAME is not set")
+wheresjava = (os.getenv("JAVA_HOME") or "variable JAVA_HOME is not set")
+blah = (os.getenv("BLAH") or "variable blah is not set")
+
+output = """You are logged in as %s, 
+your java path is %s,
+blah is %s""" % (loginname, wheresjava, blah)
+
+print(output)

@@ -1,0 +1,36 @@
+#!/usr/local/bin/python
+# Python 2.7 Scripting for System Administrators
+
+import six
+from datetime import datetime
+
+# Define the storage routine.
+def local(usertext,outfile):
+  outfile.write(usertext)
+  outfile.close()
+
+# Using six for input ensures that input works the same on both
+#   Python2 and Python3
+file2write = six.moves.input("Enter a filename, without extension: ")
+dt = datetime.now().strftime('%Y%m%d%M%S')
+ext = ".txt"
+file2write = file2write + "_" + dt + ext
+
+print("""Now enter text line by line to store in the file. When done, simply 
+    enter a completely blank line.""")
+
+lines = []
+while True:
+    line = six.moves.input()
+    if line:
+        lines.append(line)
+    else:
+        break
+text = '\n'.join(lines)
+# Add a final linebreak for cleanliness.
+text = text + '\n'
+
+# Write the file. 
+outfile = open(file2write, 'w+b')
+print("Writing your text to %s." % outfile.name)
+local(text, outfile)

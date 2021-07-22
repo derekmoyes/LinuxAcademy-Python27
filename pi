@@ -1,0 +1,18 @@
+#!/usr/local/bin/python
+# Python 2.7 Scripting for System Administrators
+
+# If you would like more digits than 10, simply set an OS environment 
+#   variable like such:
+# export DIGITS=yourinteger
+
+import os
+from math import pi
+
+pi_digits = int(os.getenv("DIGITS") or 10)
+
+if pi_digits > 48:
+  print("""We can only calculate pi to 48 digits, and you asked for more than 
+      that. Sorry, I'm setting your value to 48.""")
+  pi_digits = 48
+
+print("The value of pi, to %s digits, is: \n%.*f." % (pi_digits, pi_digits, pi))
