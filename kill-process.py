@@ -14,7 +14,7 @@ import argparse
 import textwrap
 import subprocess
 import os
-#from argparse import ArgumentParser
+from sys import exit
 
 parser = argparse.ArgumentParser(
     formatter_class=argparse.RawDescriptionHelpFormatter, 
@@ -27,6 +27,7 @@ try:
     output = subprocess.check_output(['lsof', '-n', "-i4TCP:%s" % port])
 except subprocess.CalledProcessError:
     print("No process listening on port %s" % port)
+    exit(1)
 else:
     listening = None
 
@@ -42,3 +43,4 @@ else:
         print("Killed process %s" % pid)
     else:
         print("No process listening on port %s" % port)
+        exit(1)
